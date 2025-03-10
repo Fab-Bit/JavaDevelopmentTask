@@ -47,6 +47,7 @@ jobs:
           else
             echo "Invalid platform specified. Please choose either GITHUB or GITLAB."
             exit 1
+          fi
 
       - name: Generate test report
         run: mvn surefire-report:report-only
