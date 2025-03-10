@@ -1,11 +1,13 @@
 import org.fabbit.ConfigUtil;
 import org.fabbit.Platform;
 import org.fabbit.RepositoryUseCase;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class createPullRequest {
 
     @Test(priority = 3)
+    @Parameters("platform")
     public void testCreatePullRequest(String platform) {
 
         Platform platformEnum = Platform.valueOf(platform);

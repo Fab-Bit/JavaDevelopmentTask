@@ -3,6 +3,8 @@ package org.fabbit;
 
 import io.restassured.RestAssured;
 import static org.hamcrest.Matchers.equalTo;
+
+import io.restassured.http.ContentType;
 import org.fabbit.ConfigUtil;
 
 
@@ -20,10 +22,14 @@ public class LoginPage {
 
         RestAssured.given()
                 .auth().oauth2(token)
+                .contentType(ContentType.JSON)
                 .when()
-                .get(loginUrl)
+                .get(loginUrl + "/repos/Fab-Bit/JavaDevelopmentTask")
                 .then()
+                .log().all()
                 .statusCode(200)
-                .body("login", equalTo(ConfigUtil.getUsername(platform)));
+                .body("name", equalTo("JavaDevelopmentTask"))
+                .body("owner.login", equalTo(ConfigUtil.getUsername(platform)))
+                .extract().response();
     }
 }

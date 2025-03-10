@@ -7,10 +7,9 @@ import org.testng.annotations.Test;
 public class createRepository {
 
     @Test(priority = 1, threadPoolSize = 3)
+    @Parameters("platform")
+    public void testCreateRepository(Platform platformEnum) {
 
-    public void testCreateRepository(String platform) {
-
-        Platform platformEnum = Platform.valueOf(platform);
         String apiUrl = ConfigUtil.getApiUrl(platformEnum);
         String username = ConfigUtil.getUsername(platformEnum);
         String token = ConfigUtil.getToken(platformEnum);

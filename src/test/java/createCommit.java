@@ -1,11 +1,13 @@
 import org.fabbit.ConfigUtil;
 import org.fabbit.Platform;
 import org.fabbit.RepositoryUseCase;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class createCommit {
 
     @Test(priority = 2)
+    @Parameters("platform")
     public void testCreateCommit(String platform) {
 
         Platform platformEnum = Platform.valueOf(platform);
