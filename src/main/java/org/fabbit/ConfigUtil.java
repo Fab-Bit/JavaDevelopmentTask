@@ -1,5 +1,6 @@
 package org.fabbit;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -8,7 +9,7 @@ public class ConfigUtil {
     private static Properties properties = new Properties();
 
     static {
-        try (InputStream input = ConfigUtil.class.getClassLoader().getResourceAsStream("config.properties")) {
+        try (InputStream input = new FileInputStream("config.properties")) {
             if (input == null) {
                 System.out.println("Sorry, unable to find config.properties");
             }

@@ -41,9 +41,9 @@ jobs:
       - name: Run tests
         run: |
           if [ "${{ github.event.inputs.platform }}" == "GITHUB" ]; then
-            mvn test -Dsurefire.suiteXmlFiles=src/test/resources/testng.xml -Dplatform=GITHUB
+            mvn test -Dsurefire.suiteXmlFiles=testng.xml -Dplatform=GITHUB
           elif [ "${{ github.event.inputs.platform }}" == "GITLAB" ]; then
-            mvn test -Dsurefire.suiteXmlFiles=src/test/resources/testng.xml -Dplatform=GITLAB
+            mvn test -Dsurefire.suiteXmlFiles=testng.xml -Dplatform=GITLAB
           else
             echo "Invalid platform specified. Please choose either GITHUB or GITLAB."
             exit 1
@@ -52,7 +52,7 @@ jobs:
         run: mvn surefire-report:report-only
 
       - name: Upload test report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: test-report
           path: target/site/surefire-report.html
