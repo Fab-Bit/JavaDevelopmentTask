@@ -1,0 +1,20 @@
+<suite name="GitHub Sanity Suite" parallel="tests" thread-count="4">
+    <test name="GitHubTests">
+        <parameter name="platform" value="GITHUB" />
+        <classes>
+            <class name="loginUser" />
+            <class name="createRepository"/>
+            <class name="createCommit"/>
+            <class name="createPullRequest"/>
+        </classes>
+    </test>
+    <test name="GitLabTests">
+        <parameter name="platform" value="GITLAB" />
+        <classes>
+            <class name="loginUser" />
+            <class name="createRepository"/>
+            <class name="createCommit"/>
+            <class name="createPullRequest"/>
+        </classes>
+    </test>
+</suite>
