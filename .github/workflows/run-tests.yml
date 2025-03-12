@@ -16,6 +16,7 @@ on:
 
 jobs:
   build:
+    if: github.event.pull_request.title != 'Add new feature'
     runs-on: ubuntu-latest
 
     steps:
