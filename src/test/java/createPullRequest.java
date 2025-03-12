@@ -15,6 +15,7 @@ public class createPullRequest {
         String username = ConfigUtil.getUsername(platformEnum);
         String token = ConfigUtil.getToken(platformEnum);
         RepositoryUseCase repository = new RepositoryUseCase(platformEnum, apiUrl, username, token);
+        repository.createCommit();
         repository.createPullRequest();
     }
 }

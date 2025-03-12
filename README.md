@@ -1,18 +1,36 @@
-# Project Name
-Java Development Task: Github Testing
-## How to Run Tests
+# Java Development Task: Github Testing
 
-To run the tests in this project, follow these steps:
+This project demonstrates the use of REST Assured for API testing in a Java application. It includes creating a repository, committing changes, and creating pull requests using GitHub's API.
 
-1. **Navigate to the Project Directory:**
-   Open a terminal and navigate to the root directory of the project.
+## Prerequisites
 
-2. **Run the Tests Using Maven:**
-   Execute the following command to run the tests:
-   ```sh
-   mvn test
+- Java 11 or higher
+- Maven
+- GitHub Personal Access Token
+- 
+## Running Tests Manually
 
-Open the config.properties File: Locate and open the config.properties file in the src/main/resources directory.  
-Add Your Tokens: Add your tokens for GitHub and GitLab in the config.properties file. The file should look like this:  
+1. Clone the repository:
+    ```sh
+    git clone https://github.com/your-username/JavaDevelopmentTask.git
+    cd JavaDevelopmentTask
+    ```
 
-Save the File: Save the config.properties file after adding your tokens and other configurations. 
+2. Configure your GitHub credentials in the `ConfigUtil` class.
+
+3. Run the tests using Maven:
+    ```sh
+    mvn test -Dsurefire.suiteXmlFiles=testng.xml -Dplatform=GITHUB
+    ```
+
+## Running Tests Using GitHub Actions
+
+1. Go to Actions tab on Github repo main page.
+
+2. Select Run Tests from the list of workflows.
+3. Click on the Run workflow button. 
+ ```
+
+## License
+
+This project is licensed under the MIT License.

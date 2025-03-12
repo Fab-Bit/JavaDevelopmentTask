@@ -3,7 +3,7 @@
         <parameter name="platform" value="${platform}"  />
         <classes>
             <class name="loginUser" />
-            <class name="createRepository"/>
+            <class name="createBranch"/>
             <class name="createCommit"/>
             <class name="createPullRequest"/>
         </classes>

@@ -3,10 +3,10 @@ name: Run Tests
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
     branches:
-      - main
+      - master
   workflow_dispatch:
     inputs:
       platform:
@@ -47,6 +47,7 @@ jobs:
           else
             echo "Invalid platform specified. Please choose either GITHUB or GITLAB."
             exit 1
+          fi
 
       - name: Generate test report
         run: mvn surefire-report:report-only
@@ -56,3 +57,18 @@ jobs:
         with:
           name: test-report
           path: target/site/surefire-report.html
+
+      - name: Append test results to summary
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const reportPath = 'target/site/surefire-report.html';
+            const reportContent = fs.readFileSync(reportPath, 'utf8');
+            const summaryContent = `
+            ## Test Report
+            [View full report](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts)
+            \n\n
+            ${reportContent}
+            `;
+            fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, summaryContent);
