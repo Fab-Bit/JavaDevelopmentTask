@@ -37,7 +37,10 @@ jobs:
 
       - name: Install dependencies
         run: mvn install -DskipTests
-
+        
+      - name: Set up GitHub token
+        run: echo "github.token=${{ secrets.TEST_TOKEN }}" >> config.properties
+        
       - name: Run tests
         run: |
           if [ "${{ github.event.inputs.platform }}" == "GITHUB" ]; then
